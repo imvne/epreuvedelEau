@@ -19,13 +19,6 @@ function sortedNumber (number) {
 	}
 }
 
-
-// Error management
-
-
-// Parsing
-
-
 // Solving
 let i = 0;
 let combinaisonList = "";
