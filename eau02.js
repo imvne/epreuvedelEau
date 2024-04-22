@@ -1,56 +1,49 @@
 // Paramètres à l'envers
 
 // Useful functions
-function reverse (p) {
-	for (i = p.length - 1 ; i >= 2 ; i--) {
-		console.log(p[i]);
+function reverse (arg) {
+	const argumentsList = [];
+	for (let i = arg.length - 1 ; i >= 0 ; i--) {
+		argumentsList.push(arg[i]);
 	}
+	return argumentsList;
 }
 
 // Error management
-function noArguments() {	
-if (!process.argv[2]) {
+function isArguments() {	
+if (process.argv[2]) {
 	return true;
 }
 }
 
 // Parsing
-
+function getArguments() {
+	return process.argv.slice(2);
+}
 
 // Solving
 
 function resolution() {
-	if (noArguments()){
-		console.log('erreur')
+	const arguments = getArguments();
+	if (!isArguments()){
+		return 'erreur';
 	}
 	else {
-		reverse(process.argv);
+		return reverse(arguments);
 	}		
 }
 
+const reversedArguments = resolution();
 
 // Print
+if (reversedArguments == 'erreur') {
+	console.log(reversedArguments);
+}
+else {
+	for (const arguments of reversedArguments) {
+		console.log(arguments);
+	}
+}
 
-resolution();
-
-
-
-
-
-// résolu en 2h
-
-// function reverse (p) {
-// 	for (i = p.length - 1 ; i >= 2 ; i--) {
-// 		console.log(p[i]);
-// 	}
-// }
-
-// let arguments = process.argv;
-
-// if (!process.argv[2]){
-// 	console.log('erreur');
-// }
-
-// else {
-// 	reverse(arguments);
-// }
+// j'ai print de cette manière afin que si ce qui est retourné dans la fonction resolution est une erreur alors afficher 'erreur' normalement
+// mais si ce qui est retourné dans la fonction est la liste inversée des arguments donnés, alors afficher chaque argument un à un, sinon ça s'affichait sous forme de tableau en vert
