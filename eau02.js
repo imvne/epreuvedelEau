@@ -1,7 +1,7 @@
 // Paramètres à l'envers
 
 // Useful functions
-function reverse (arg) {
+function reverse(arg) {
 	const argumentsList = [];
 	for (let i = arg.length - 1 ; i >= 0 ; i--) {
 		argumentsList.push(arg[i]);
@@ -26,7 +26,7 @@ function getArguments() {
 function resolution() {
 	const arguments = getArguments();
 	if (!isArguments()){
-		return 'erreur';
+		return ['erreur'];  
 	}
 	else {
 		return reverse(arguments);
@@ -36,14 +36,12 @@ function resolution() {
 const reversedArguments = resolution();
 
 // Print
-if (reversedArguments == 'erreur') {
-	console.log(reversedArguments);
-}
-else {
-	for (const arguments of reversedArguments) {
-		console.log(arguments);
-	}
+
+for (const arguments of reversedArguments) {
+	console.log(arguments);
 }
 
-// j'ai print de cette manière afin que si ce qui est retourné dans la fonction resolution est une erreur alors afficher 'erreur' normalement
-// mais si ce qui est retourné dans la fonction est la liste inversée des arguments donnés, alors afficher chaque argument un à un, sinon ça s'affichait sous forme de tableau en vert
+
+// j'ai print de cette manière afin que ce qui soit retourné dans la fonction soit affiché un élément après l'autre, 
+// sinon ça s'affichait sous forme de tableau en vert
+// je met 'erreur' dans un tableau pour qu'il soit affiché d'un coup et pas lettre après lettre à cause de for of 
