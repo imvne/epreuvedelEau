@@ -24,12 +24,11 @@ function getArguments() {
 // Solving
 
 function resolution() {
-	const arguments = getArguments();
 	if (!isArguments()){
 		return ['erreur'];  
 	}
 	else {
-		return reverse(arguments);
+		return reverse(getArguments());
 	}		
 }
 
