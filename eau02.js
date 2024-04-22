@@ -42,6 +42,6 @@ for (const arguments of reversedArguments) {
 }
 
 
-// j'ai print de cette manière afin que ce qui soit retourné dans la fonction soit affiché un élément après l'autre, 
+// j'ai print avec for..of afin que ce qui soit retourné dans la fonction reverse soit affiché un élément après l'autre, 
 // sinon ça s'affichait sous forme de tableau en vert
-// je met 'erreur' dans un tableau pour qu'il soit affiché d'un coup et pas lettre après lettre à cause de for of 
+// je met 'erreur' dans un tableau pour qu'il soit affiché d'un coup et pas lettre après lettre à cause de for..of 
