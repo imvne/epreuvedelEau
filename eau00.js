@@ -1,7 +1,7 @@
 // Combinaison de trois chiffres
 
 // Useful functions
-function repeatedNumber(number) {
+function isRepeatedNumber(number) {
 	if (number[0] == number[1] || number[1] == number[2] || number[0] == number[2]){
 		return true;
 	}
@@ -10,7 +10,7 @@ function repeatedNumber(number) {
 	}
 }
 
-function sortedNumber (number) {
+function isSortedNumber (number) {
 	if (number[0] < number[1] && number[1] < number[2]) {
 		return true;
 	}
@@ -25,10 +25,10 @@ let combinaisonList = "";
 
 for (; i < 999; i++) {
 	let number = i.toString().padStart(3, 0);			
-	if (repeatedNumber(number)) {
+	if (isRepeatedNumber(number)) {
 		continue;
 	}
-	else if (!sortedNumber(number)) {
+	else if (!isSortedNumber(number)) {
 		continue;
 	}
 	let combinaison = number.padStart(3, '0')
