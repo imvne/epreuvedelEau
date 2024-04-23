@@ -10,7 +10,7 @@ function reverse(arg) {
 }
 
 // Error management
-function isArguments() {	
+function checkIfArguments() {	
 if (process.argv[2]) {
 	return true;
 }
@@ -23,8 +23,8 @@ function getArguments() {
 
 // Solving
 
-function resolution() {
-	if (!isArguments()){
+function getResolution() {
+	if (!checkIfArguments()){
 		return ['erreur'];  
 	}
 	else {
@@ -32,7 +32,7 @@ function resolution() {
 	}		
 }
 
-const reversedArguments = resolution();
+const reversedArguments = getResolution();
 
 // Print
 
