@@ -20,7 +20,7 @@ function isSortedNumber (number) {
 }
 
 // Solving
-function resolution(){
+function getResolution(){
 	let i = 0;
 	let combinaisonList = "";
 	
@@ -40,7 +40,7 @@ function resolution(){
 
 
 // Print
-console.log(resolution());
+console.log(getResolution());
 
 
 // je défini number en tant que string pour qu'il soit considéré comme un tableau et que ce soit simple d'atteindre chaque chiffre d'un nombre
