@@ -20,24 +20,27 @@ function isSortedNumber (number) {
 }
 
 // Solving
-let i = 0;
-let combinaisonList = "";
-
-for (; i < 999; i++) {
-	let number = i.toString().padStart(3, 0);			
-	if (isRepeatedNumber(number)) {
-		continue;
+function resolution(){
+	let i = 0;
+	let combinaisonList = "";
+	
+	for (; i < 999; i++) {
+		let number = i.toString().padStart(3, 0);			
+		if (isRepeatedNumber(number)) {
+			continue;
+		}
+		else if (!isSortedNumber(number)) {
+			continue;
+		}
+		let combinaison = number.padStart(3, '0')
+		combinaisonList += number + " ";
 	}
-	else if (!isSortedNumber(number)) {
-		continue;
-	}
-	let combinaison = number.padStart(3, '0')
-	combinaisonList += number + " ";
+	return combinaisonList;
 }
 
 
 // Print
-console.log(combinaisonList);
+console.log(resolution());
 
 
 // je défini number en tant que string pour qu'il soit considéré comme un tableau et que ce soit simple d'atteindre chaque chiffre d'un nombre
