@@ -10,10 +10,10 @@ function reverse(arg) {
 }
 
 // Error management
-function checkIfArguments() {	
-if (process.argv[2]) {
-	return true;
-}
+function checkArguments(arg){
+	if (arg.length > 0) {
+		return true;
+	}
 }
 
 // Parsing
@@ -24,11 +24,12 @@ function getArguments() {
 // Solving
 
 function getResolution() {
-	if (!checkIfArguments()){
+	let arguments = getArguments();
+	if (!checkArguments(arguments)){
 		return ['erreur'];  
 	}
 	else {
-		return reverse(getArguments());
+		return reverse(arguments);
 	}		
 }
 
