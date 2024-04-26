@@ -21,10 +21,11 @@ function getArguments() {
 	return process.argv.slice(2);
 }
 
+
 // Solving
 
 function getResolution() {
-	let arguments = getArguments();
+	const arguments = getArguments();
 	if (!checkArguments(arguments)){
 		return ['erreur'];  
 	}
