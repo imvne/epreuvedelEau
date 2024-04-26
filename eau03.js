@@ -42,12 +42,12 @@ function getArguments() {
 	return arguments
 }
 
-let number = parseInt(getArguments());
+const number = parseInt(getArguments());
 
 // Solving
 
 function resolution(){
-	let arguments = getArguments();
+	const arguments = getArguments();
 	if (!checkArguments(arguments)){
 		return "erreur : insérez un seul argument"
 	}
