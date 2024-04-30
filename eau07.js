@@ -13,18 +13,27 @@ function toBigLetter(letter) {
 }
 
 function argumentsSlice(arguments, firstIndex, endIndex){
-	let argumentsSliced = [];
-	for (let i = firstIndex ; i <= endIndex ; i++){
-		argumentsSliced.push(arguments[i])
+	if (Array.isArray(arguments)){
+		let argumentsSliced = [];
+		for (let i = firstIndex ; i <= endIndex ; i++){
+			argumentsSliced.push(arguments[i])
+		}
+		return argumentsSliced
 	}
-	return argumentsSliced
+	else {
+		let argumentsSliced = "";
+		for (let i = firstIndex ; i <= endIndex ; i++){
+			argumentsSliced += arguments[i]
+		}
+		return argumentsSliced
+	}
 }
 
 function getUpperFirstLetter(array){
 	let upperFirstLetterArr = [];
 	let upperFrst = "";
 	for (element of array){
-		upperFrst = toBigLetter(element[0]) + element.slice(1) // refaire la fonction slice
+		upperFrst = toBigLetter(element[0]) + argumentsSlice(element, 1, element.length-1) // refaire la fonction slice
 		upperFirstLetterArr.push(upperFrst)
 	}
 	return upperFirstLetterArr.join(' ')
