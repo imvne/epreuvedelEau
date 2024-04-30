@@ -2,11 +2,10 @@
 
 // Useful functions
 
-function checkStringInString(){
-	const stringTestScope = containerSring.length - contentSring.length;
-	for (i = 0 ; i <= stringTestScope ; i++){
-		let testString = containerSring.slice(i, i + contentSring.length);
-		if (testString === contentSring){
+function checkStringInString(str1, str2){
+	for (i = 0 ; i <= str1.length - str2.length ; i++){
+		let testString = str1.slice(i, i + str2.length);
+		if (testString.toLowerCase() === str2.toLowerCase()){
 			return true
 		}
 	}
@@ -45,7 +44,8 @@ const contentSring = argument[1];
 
 function stringInString(){
 	const argument = getArguments();
-	const string = argument;
+	const string1 = argument[0];
+	const string2 = argument[1];
 	const argumentsString = argument.join(' ')
 	if (!checkArguments(argument)){
 		return 'erreur : insérez deux arguments'
@@ -54,7 +54,7 @@ function stringInString(){
 		return 'erreur: insérez uniquement des lettres'
 	}
 	else {
-		return checkStringInString(string)
+		return checkStringInString(string1, string2)
 	}
 }
 
