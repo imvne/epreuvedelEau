@@ -12,7 +12,7 @@ function toBigLetter(letter) {
 	}
 }
 
-function argumentsSlice(arguments, firstIndex, endIndex){
+function slice(arguments, firstIndex, endIndex){
 	if (Array.isArray(arguments)){
 		let argumentsSliced = [];
 		for (let i = firstIndex ; i <= endIndex ; i++){
@@ -33,7 +33,7 @@ function getUpperFirstLetter(array){
 	let upperFirstLetterArr = [];
 	let upperFrst = "";
 	for (element of array){
-		upperFrst = toBigLetter(element[0]) + argumentsSlice(element, 1, element.length-1) // refaire la fonction slice
+		upperFrst = toBigLetter(element[0]) + slice(element, 1, element.length-1) // refaire la fonction slice
 		upperFirstLetterArr.push(upperFrst)
 	}
 	return upperFirstLetterArr.join(' ')
@@ -61,7 +61,7 @@ function checkArgumentType(arg){
 
 function getArguments() {
 	let arguments = process.argv;
-	let argSliced = argumentsSlice(arguments, 2, arguments.length-1)
+	let argSliced = slice(arguments, 2, arguments.length-1)
 	return argSliced
 }
 
