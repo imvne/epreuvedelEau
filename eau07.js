@@ -29,7 +29,8 @@ function slice(arguments, firstIndex, endIndex){
 	}
 }
 
-function getUpperFirstLetter(array){
+function getUpperFirstLetter(arg){
+	let array = arg[0].split(' ');
 	let upperFirstLetterArr = [];
 	let upperFrst = "";
 	for (element of array){
@@ -66,7 +67,6 @@ function getArguments() {
 }
 
 const argument = getArguments();
-const oneArgArr = argument[0].split(' ')
 
 // Solving
 
@@ -74,11 +74,11 @@ function upperFirstLetter(){
 	if (!checkArguments(argument)){
 		return "erreur : n'insérez qu'un argument"
 	}
-	else if (!checkArgumentType(oneArgArr)){
+	else if (!checkArgumentType(argument)){
 		return "erreur: n'insérez pas de nombres"
 	}
 	else {
-		return getUpperFirstLetter(oneArgArr)
+		return getUpperFirstLetter(argument)
 	}
 }
 
