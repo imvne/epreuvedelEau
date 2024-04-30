@@ -36,9 +36,6 @@ function getArguments() {
 	let arguments = process.argv.slice(2);
 	return arguments
 }
-const argument = getArguments();
-const containerSring = argument[0];
-const contentSring = argument[1];
 
 // Solving
 
