@@ -2,11 +2,47 @@
 
 // Useful functions
 
+function toBigLetter(letter) {
+	if (letter.charCodeAt(0) >= 97 && letter.charCodeAt(0) <= 122) {
+	    let bigLetter = String.fromCharCode(letter.charCodeAt(0) - 32);
+	    return bigLetter;
+	} 
+	else {
+	    return letter
+	}
+}
+  
+
+function isLetter(char) {
+	if (/[a-zA-ZÀ-ÖØ-öø-ÿ]/.test(char)){
+		return true
+	}
+}
+
+function checkEven(number) {
+	if (number % 2 === 0){
+		return true
+	}
+}
+
 function upperInEveryTwo(arg){
 	let newUpperLowerArray = [];
-	for (i = 0 ; i < arg.length ; i+=2){
-		let upper = arg[i].toUpperCase();
-		newUpperLowerArray.push(upper, arg[i+1])
+	let even = true;
+	for (let i = 0 ; i < arg.length ; i++){
+		if (isLetter(arg[i])){
+			
+			if (even) {
+				newUpperLowerArray.push(toBigLetter(arg[i]))
+				even = false;
+			}
+			else {
+				newUpperLowerArray.push(arg[i])
+				even = true;
+			}
+		}
+		else {
+			newUpperLowerArray.push(arg[i])
+		}
 	}
 	return newUpperLowerArray.join('');
 }
