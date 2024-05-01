@@ -54,12 +54,12 @@ function checkArguments(arg){
 }
 
 function checkArgumentType(arg){
-	for (a of arg){
-		if (/^\d+$/.test(a)){
-			return true;
+	for (element of arg){
+		if (!/^\d+$/.test(element)){
+			return false;
 		}
 	}
-	return false
+	return true
 }
 
 
