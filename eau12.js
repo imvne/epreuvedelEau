@@ -65,15 +65,14 @@ function checkArgumentType(arg){
 // Parsing
 
 function getArguments(){
-	let argSliced = slice(process.argv, 2, process.argv.length-1)
-	return argSliced
+	let arguments = slice(process.argv, 2, process.argv.length-1)
+	return arguments
 }
 
 // Solving
 
 function bubbleSorted(){
 	const argument = getArguments();
-	const numbers = charToNumber(argument);
 	if (!checkArgument(argument)){
 		return 'erreur : insérez au moins deux arguments'
 	}
@@ -81,6 +80,7 @@ function bubbleSorted(){
 		return "erreur : n'insérez que des nombres"
 	}
 	else {
+		const numbers = charToNumber(argument);
 		return bubblesort(numbers)
 	}
 }

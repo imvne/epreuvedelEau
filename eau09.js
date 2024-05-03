@@ -66,8 +66,8 @@ function checkArgumentType(arg){
 // Parsing
 
 function getArguments(){
-	const argSliced = slice(process.argv, 2, process.argv.length-1) 
-	return argSliced
+	const arguments = slice(process.argv, 2, process.argv.length-1) 
+	return arguments
 	
 }
 

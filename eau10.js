@@ -44,8 +44,8 @@ function checkArguments(arg){
 // Parsing
 
 function getArguments(){
-	const argSliced = slice(process.argv, 2, process.argv.length-1) 
-	return argSliced
+	const argumments = slice(process.argv, 2, process.argv.length-1) 
+	return argumments
 	
 }
 

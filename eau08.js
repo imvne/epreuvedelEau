@@ -41,9 +41,8 @@ function checkArguments(arg){
 // Parsing
 
 function getArguments() {
-	let arguments = process.argv;
-	let argSliced = slice(arguments, 2, arguments.length-1)
-	return argSliced
+	let arguments = slice(process.argv, 2, process.argv.length-1)
+	return arguments
 }
 
 
