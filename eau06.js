@@ -2,17 +2,22 @@
 
 // Useful functions
 
-function toBigLetter(letter) {
-	if (letter.charCodeAt(0) >= 97 && letter.charCodeAt(0) <= 122) {
-	    let bigLetter = String.fromCharCode(letter.charCodeAt(0) - 32);
-	    return bigLetter;
-	} 
-	else {
-	    return letter
+function toBigLetter(word) {
+	let bigLetters = "";
+	
+	for ( let i = 0 ; i < word.length ; i++){
+		
+		if (word.charCodeAt(0) >= 97 && word.charCodeAt(0) <= 122){
+			bigLetters += String.fromCharCode(word.charCodeAt(i) - 32)
+		}
+		else {
+			bigLetters += word[i]
+		}
 	}
+	
+	return bigLetters
 }
   
-
 function isLetter(char) {
 	if (/[a-zA-ZÀ-ÖØ-öø-ÿ]/.test(char)){
 		return true
