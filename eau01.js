@@ -1,7 +1,8 @@
 // Combinaison de deux nombres
 
 // Solving
-function getResolution(){
+
+function twoNumbersCombination(){
 	let list = [];
 
 	for (let i = 0; i < 99; i++) {
@@ -22,9 +23,6 @@ function getResolution(){
 }
 
 
-
-
 // Print
-console.log(getResolution());
 
-// résolu en 1h
+console.log(twoNumbersCombination());
