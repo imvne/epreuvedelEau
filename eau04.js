@@ -2,15 +2,32 @@
 
 // Useful functions
 
+function slice(arguments, firstIndex, endIndex){
+	if (Array.isArray(arguments)){
+		let argumentsSliced = [];
+		for (let i = firstIndex ; i <= endIndex ; i++){
+			argumentsSliced.push(arguments[i])
+		}
+		return argumentsSliced
+	}
+	else {
+		let argumentsSliced = "";
+		for (let i = firstIndex ; i <= endIndex ; i++){
+			argumentsSliced += arguments[i]
+		}
+		return argumentsSliced
+	}
+}
+
 function getRoundSquareRoot() {
 	const squareRoot = Math.sqrt(getArguments());
 	return Math.round(squareRoot);
 }
 
-const roundSquareRoot = getRoundSquareRoot();
-
 
 function checkPrimeNumber(number) {
+	const roundSquareRoot = getRoundSquareRoot();
+	
 	if (number <= 1){
 		return false
 	}
@@ -28,11 +45,11 @@ function checkPrimeNumber(number) {
 
 function getNextPrimeNumber(number) {
 	for (let j = number ;  ; j++) {
+		
 		if (checkPrimeNumber(j)) { 
 			return j;
 		}
 	}	
-
 }
 
 
@@ -56,18 +73,16 @@ function checkArgumentType(arg){
 // Parsing
 
 function getArguments() {
-	let arguments = process.argv.slice(2);
+	let arguments = slice(process.argv, 2, process.argv.length-1);
 	return arguments
 }
-
-const argument = getArguments();
 
 
 // Solving
 
 function nextPrimeNumber(){
 	const argument = getArguments();
-	const number = parseInt(argument);
+	
 	if (!checkArguments(argument)){
 		return 'erreur : insérez un seul argument'
 	}
@@ -75,6 +90,7 @@ function nextPrimeNumber(){
 		return 'erreur: insérez un nombre entier positif'
 	}
 	else {
+		const number = parseInt(argument);
 		return getNextPrimeNumber(number)
 	}
 	
@@ -83,4 +99,4 @@ function nextPrimeNumber(){
 
 // Print
 
-console.log(nextPrimeNumber(argument));
+console.log(nextPrimeNumber());
