@@ -25,6 +25,7 @@ function threeDigitsCombination(){
 	
 	for (let i = 0 ; i < 999 ; i++) {
 		let number = i.toString().padStart(3, 0);			
+		
 		if (isRepeatedNumber(number)) {
 			continue;
 		}
