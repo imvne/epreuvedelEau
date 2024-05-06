@@ -2,14 +2,20 @@
 
 // Useful functions
 
-function toBigLetter(letter) {
-	if (letter.charCodeAt(0) >= 97 && letter.charCodeAt(0) <= 122) {
-	    let bigLetter = String.fromCharCode(letter.charCodeAt(0) - 32);
-	    return bigLetter;
-	} 
-	else {
-	    return letter
+function toBigLetter(word) {
+	let bigLetters = "";
+	
+	for ( let i = 0 ; i < word.length ; i++){
+		
+		if (word.charCodeAt(0) >= 97 && word.charCodeAt(0) <= 122){
+			bigLetters += String.fromCharCode(word.charCodeAt(i) - 32)
+		}
+		else {
+			bigLetters += word[i]
+		}
 	}
+	
+	return bigLetters
 }
 
 function slice(arguments, firstIndex, endIndex){
@@ -31,13 +37,15 @@ function slice(arguments, firstIndex, endIndex){
 
 function getUpperFirstLetter(arg){
 	let array = arg[0].split(' ');
-	let upperFirstLetterArr = [];
-	let upperFrst = "";
+	let upperFirstLetterArray = "";
+	let upperFirstLetter = "";
+	
 	for (element of array){
-		upperFrst = toBigLetter(element[0]) + slice(element, 1, element.length-1) // refaire la fonction slice
-		upperFirstLetterArr.push(upperFrst)
+		upperFirstLetter = toBigLetter(element[0]) + slice(element, 1, element.length-1)
+		upperFirstLetterArray += upperFirstLetter + ' '
 	}
-	return upperFirstLetterArr.join(' ')
+	
+	return upperFirstLetterArray
 }
 
 
@@ -65,11 +73,12 @@ function getArguments() {
 	return arguments
 }
 
-const argument = getArguments();
 
 // Solving
 
 function upperFirstLetter(){
+	const argument = getArguments();
+	
 	if (!checkArguments(argument)){
 		return "erreur : n'insérez qu'un argument"
 	}
@@ -80,7 +89,6 @@ function upperFirstLetter(){
 		return getUpperFirstLetter(argument)
 	}
 }
-
 
 
 // Print
