@@ -1,30 +1,54 @@
 // Paramètres à l'envers
 
 // Useful functions
+
+function slice(arguments, firstIndex, endIndex){
+	if (Array.isArray(arguments)){
+		let argumentsSliced = [];
+		for (let i = firstIndex ; i <= endIndex ; i++){
+			argumentsSliced.push(arguments[i])
+		}
+		return argumentsSliced
+	}
+	else {
+		let argumentsSliced = "";
+		for (let i = firstIndex ; i <= endIndex ; i++){
+			argumentsSliced += arguments[i]
+		}
+		return argumentsSliced
+	}
+}
+
 function reverse(arg) {
 	const argumentsList = [];
+	
 	for (let i = arg.length - 1 ; i >= 0 ; i--) {
 		argumentsList.push(arg[i]);
 	}
 	return argumentsList;
 }
 
+
 // Error management
+
 function checkArguments(arg){
 	if (arg.length > 0) {
 		return true;
 	}
 }
 
+
 // Parsing
+
 function getArguments() {
-	return process.argv.slice(2);
+	let arguments = slice(process.argv, 2, process.argv.length-1)
+	return arguments;
 }
 
 
 // Solving
 
-function getResolution() {
+function reversed() {
 	const arguments = getArguments();
 	if (!checkArguments(arguments)){
 		return ['erreur'];  
@@ -34,13 +58,15 @@ function getResolution() {
 	}		
 }
 
-const reversedArguments = getResolution();
+const reversedArguments = reversed();
+
 
 // Print
 
 for (const arguments of reversedArguments) {
 	console.log(arguments);
 }
+
 
 
 // j'ai print avec for..of afin que ce qui soit retourné dans la fonction reverse soit affiché un élément après l'autre, 
