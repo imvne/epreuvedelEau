@@ -40,7 +40,7 @@ function bubblesort(arr){
 		}
 		
 	}
-	return arr
+	return arr.join(' ')
 }
 
 // Error management
@@ -69,10 +69,12 @@ function getArguments(){
 	return arguments
 }
 
+
 // Solving
 
 function bubbleSorted(){
 	const argument = getArguments();
+	
 	if (!checkArgument(argument)){
 		return 'erreur : insérez au moins deux arguments'
 	}
