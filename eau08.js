@@ -20,8 +20,10 @@ function slice(arguments, firstIndex, endIndex){
 }
 
 function checkNumberOnly(arg){
-	for (let i = 0; i < arg.length ; i++){
-		if (arg.charCodeAt(i) < 47 || arg.charCodeAt(i) > 58){
+	let element = arg[0]
+	
+	for (let i = 0; i < element.length ; i++){
+		if (element.charCodeAt(i) < 47 || element.charCodeAt(i) > 58){
 			return false
 		}
 	}
@@ -50,12 +52,12 @@ function getArguments() {
 
 function numberOnly(){
 	const argument = getArguments();
-	const arg = argument[0];
+	
 	if (!checkArguments(argument)){
 		return "erreur : n'insérez qu'un argument"
 	}
 	else {
-		return checkNumberOnly(arg)
+		return checkNumberOnly(argument)
 	}
 }
 
