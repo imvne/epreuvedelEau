@@ -20,14 +20,20 @@ function slice(arguments, firstIndex, endIndex){
 	}
 }
 
-function toBigLetter(letter) {
-	if (letter.charCodeAt(0) >= 97 && letter.charCodeAt(0) <= 122) {
-	    let bigLetter = String.fromCharCode(letter.charCodeAt(0) - 32);
-	    return bigLetter;
-	} 
-	else {
-	    return letter
+function toBigLetter(word) {
+	let bigLetters = "";
+	
+	for ( let i = 0 ; i < word.length ; i++){
+		
+		if (word.charCodeAt(0) >= 97 && word.charCodeAt(0) <= 122){
+			bigLetters += String.fromCharCode(word.charCodeAt(i) - 32)
+		}
+		else {
+			bigLetters += word[i]
+		}
 	}
+	
+	return bigLetters
 }
 
 function upperFirstLetter(arr){
@@ -40,19 +46,19 @@ function upperFirstLetter(arr){
 	return upperFirstLetterArr;
 }
 
-function asciiOrderSort(arr){
-	for (let i = 0 ; i < arr.length-1 ; i++){
+function asciiOrderSort(array){
+	for (let i = 0 ; i < array.length-1 ; i++){
 		
-		for (let j = 0 ; j < arr.length-1 ; j++){
-			if (arr[j].charCodeAt(0) > arr[j+1].charCodeAt(0)){
-				let temp = arr[j]
-				arr[j] = arr[j+1]
-				arr[j+1] = temp
+		for (let j = 0 ; j < array.length-1 ; j++){
+			if (array[j].charCodeAt(0) > array[j+1].charCodeAt(0)){
+				let temp = array[j]
+				array[j] = array[j+1]
+				array[j+1] = temp
 			}
 		}
 		
 	}
-	return arr
+	return array.join(' ')
 }
 
 // Error management
@@ -80,11 +86,11 @@ function getArguments(){
 }
 
 
-
 // Solving
 
 function asciiOrderSorted(){
 	const argument = getArguments();
+	
 	if (!checkArgument(argument)){
 		return 'erreur : insérez au moins deux arguments'
 	}
