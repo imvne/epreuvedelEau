@@ -33,6 +33,7 @@ function checkEven(number) {
 function upperInEveryTwo(arg){
 	let newUpperLowerArray = [];
 	let even = true;
+	
 	for (let i = 0 ; i < arg.length ; i++){
 		if (isLetter(arg[i])){
 			
@@ -76,13 +77,14 @@ function getArguments() {
 	let arguments = process.argv.slice(2);
 	return arguments
 }
-const argument = getArguments();
-const argumentsString = argument.join(' ')
 
 
 // Solving
 
 function upperEveryTwo(){
+	const argument = getArguments();
+	const argumentsString = argument.join(' ')
+	
 	if (!checkArguments(argument)){
 		return 'erreur : insérez au moins un argument'
 	}
