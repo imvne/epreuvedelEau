@@ -28,20 +28,21 @@ function charToNumber(arg){
 	return numberArr
 }
 
-function selectionSort(arr){
-	for (let i = 0 ; i < arr.length-1 ; i++){
+function selectionSort(array){
+	for (let i = 0 ; i < array.length-1 ; i++){
 		let min = i;
-		for (let j = i + 1 ; j < arr.length ; j++){
-			if (arr[j] < arr[min]){
+		
+		for (let j = i + 1 ; j < array.length ; j++){
+			if (array[j] < array[min]){
 				min = j;
 			}
 		}
-		let temp = arr[min];
-		arr[min] = arr[i];
-		arr[i] = temp;
+		let temp = array[min];
+		array[min] = array[i];
+		array[i] = temp;
 		
 	}
-	return arr
+	return array.join(' ')
 }
 
 // Error management
