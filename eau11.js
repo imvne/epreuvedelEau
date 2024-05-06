@@ -28,7 +28,7 @@ function charToNumber(arg){
 	return numberArr
 }
 
-function sort(arg, firstNum, lastNum){
+function sortNumbers(arg, firstNum, lastNum){
 	if (lastNum - firstNum < 2){
 		return arg
 	}
@@ -46,8 +46,8 @@ function sort(arg, firstNum, lastNum){
 		let temp = arg[pivot];
 		arg[pivot] = arg[cursor];
 		arg[cursor] = temp;
-		sort(arg, firstNum, cursor);
-		sort(arg, cursor + 1, lastNum);
+		sortNumbers(arg, firstNum, cursor);
+		sortNumbers(arg, cursor + 1, lastNum);
 		return arg
 	}
 	
@@ -56,17 +56,18 @@ function sort(arg, firstNum, lastNum){
 function getAbsoluteMinDifference(arg){
 	let minDifference = undefined ;
 	let numbersDifferences;
+	
 	for (let i = 0 ; i <= arg.length-2 ; i++){
 		numbersDifferences = arg[i+1] - arg[i];
-		if (minDifference === undefined){
+		
+		if (minDifference === undefined || numbersDifferences <= minDifference){
 			minDifference = numbersDifferences;
 		}
-		else if (numbersDifferences <= minDifference){
-			minDifference = numbersDifferences;
-		}
+		
 	}
 	return minDifference;
 }
+
 
 // Error management
 
@@ -79,12 +80,13 @@ function checkArguments(arg){
 
 function checkArgumentType(arg){
 	for (element of arg){
-		if (!/^\d+$/.test(element)){
+		if (!/^[-+]?\d+$/.test(element)){
 			return false;
 		}
 	}
 	return true
 }
+
 
 // Parsing
 
@@ -94,12 +96,14 @@ function getArguments(){
 	
 }
 
+
 // Solving
 
 function absoluteMinDifference(){
 	const argument = getArguments();
 	const numbers = charToNumber(argument)
-	const numbersSorted = sort(numbers, 0, numbers.length);
+	const numbersSorted = sortNumbers(numbers, 0, numbers.length);
+	
 	if (!checkArguments(argument)){
 		return 'erreur : insérez au moins trois arguments'
 	}
@@ -110,6 +114,7 @@ function absoluteMinDifference(){
 		return getAbsoluteMinDifference(numbersSorted)
 	}
 }
+
 
 // Print
 
