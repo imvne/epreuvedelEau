@@ -22,6 +22,7 @@ function slice(arguments, firstIndex, endIndex){
 function getWantedIndex(arr){
 	let phrase = slice(arr, 0, arr.length-2)
 	let wantedArg = arr[arr.length-1]
+	
 	for (let i = 0 ; i < phrase.length ; i++){
 		if (phrase[i] === wantedArg){
 			return i;
@@ -54,6 +55,7 @@ function getArguments(){
 
 function indexWanted(){
 	const argument = getArguments();
+	
 	if (!checkArguments(argument)){
 		return 'erreur : insérez au moins deux arguments'
 	}
