@@ -19,13 +19,6 @@ function slice(arguments, firstIndex, endIndex){
 	}
 }
 
-
-function checkFirstFibonacciNumbers() {
-	if (number == 0 || number == 1){
-		return true
-	}
-}
-
 function getFibonacci(num){
 	let fibonacciSuiteArray = [0,1];	
 	let nextFibonacciNumber;
