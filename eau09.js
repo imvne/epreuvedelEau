@@ -1,6 +1,7 @@
 // Entre min et max
 
 // Useful functions
+
 function slice(arguments, firstIndex, endIndex){
 	if (Array.isArray(arguments)){
 		let argumentsSliced = [];
@@ -18,31 +19,36 @@ function slice(arguments, firstIndex, endIndex){
 	}
 }
 
-function getMinMax(arg1, arg2){
-	let minMaxArr = [];
+function sortMinMax(arg1, arg2){
+	let minMaxSorted = [];
+	
 	if (arg1 < arg2){
 		let min = arg1;
 		let max = arg2;
-		minMaxArr.push(min, max)
+		minMaxSorted.push(min, max)
 	}
 	else {
 		let min = arg2;
 		let max = arg1;
-		minMaxArr.push(min, max)
+		minMaxSorted.push(min, max)
 	}
-	return minMaxArr
+	return minMaxSorted
 }
 
 function getBetweenMinMax(arg1, arg2){
-	const minMaxArr = getMinMax(arg1, arg2);
-	const min = parseInt(minMaxArr[0]);
-	const max = parseInt(minMaxArr[1]);
-	let betweenMinMaxArr = [];
+	const minMaxSorted = sortMinMax(arg1, arg2);
+	
+	const min = parseInt(minMaxSorted[0]);
+	const max = parseInt(minMaxSorted[1]);
+	
+	let betweenMinMaxArr = "";
+	
 	for (let i = 0; i < max-min; i++){
-		betweenMinMaxArr.push(min+i)
+		betweenMinMaxArr += min+i + " "
 	}
 	return betweenMinMaxArr
 }
+
 
 // Error management
 
