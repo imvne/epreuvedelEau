@@ -2,7 +2,23 @@
 
 // Useful functions
 
-const fibonacciSuite = [0,1,1,2];
+function slice(arguments, firstIndex, endIndex){
+	if (Array.isArray(arguments)){
+		let argumentsSliced = [];
+		for (let i = firstIndex ; i <= endIndex ; i++){
+			argumentsSliced.push(arguments[i])
+		}
+		return argumentsSliced
+	}
+	else {
+		let argumentsSliced = "";
+		for (let i = firstIndex ; i <= endIndex ; i++){
+			argumentsSliced += arguments[i]
+		}
+		return argumentsSliced
+	}
+}
+
 
 function checkFirstFibonacciNumbers() {
 	if (number == 0 || number == 1){
@@ -11,18 +27,27 @@ function checkFirstFibonacciNumbers() {
 }
 
 function getFibonacci(num){
-	let suiteArr = [0,1];			// on a seulement besoin des deux premiers chiffres de la suite car n[i] = n[i-1] + n[i-2]
+	let fibonacciSuiteArray = [0,1];	
 	let nextFibonacciNumber;
-	for (let i = suiteArr.length - 1; i < num ; i++){
-		nextFibonacciNumber = suiteArr[i] + suiteArr[i - 1];
-		suiteArr.push(nextFibonacciNumber);
-	};
-	return(suiteArr[suiteArr.length - 1]);
-}
+	let lastIndex = fibonacciSuiteArray.length - 1;
+	
+	if (num === 0){
+		return 0
+	}
+	else {
+		
+		for (let i = fibonacciSuiteArray.length - 1; i < num ; i++){
+			nextFibonacciNumber = fibonacciSuiteArray[i] + fibonacciSuiteArray[i - 1];
+			fibonacciSuiteArray.push(nextFibonacciNumber);
+		};
+		return(fibonacciSuiteArray[lastIndex]);
+	}
+	}
 
+	
 // Error management
 
-function checkArguments(arg){ 	     // vérifier si il y'a un argument, et qu'un seul
+function checkArguments(arg){
 	if (arg.length == 1) {
 		return true;
 	}
@@ -38,15 +63,14 @@ function checkArgumentType(arg){
 // Parsing
 
 function getArguments() {
-	let arguments = process.argv.slice(2);
+	let arguments = slice(process.argv, 2, process.argv.length-1);
 	return arguments
 }
 
-const number = parseInt(getArguments());
 
 // Solving
 
-function resolution(){
+function fibonacciSuite(){
 	const arguments = getArguments();
 	if (!checkArguments(arguments)){
 		return "erreur : insérez un seul argument"
@@ -54,14 +78,13 @@ function resolution(){
 	else if (!checkArgumentType(arguments)) {
 		return 'erreur: insérez un nombre'
 	}
-	else if (checkFirstFibonacciNumbers()){
-		return fibonacciSuite[number];
-	} 
 	else {
+		const number = parseInt(getArguments());
 		return getFibonacci(number);
 	}
 }
 
+
 // Print
 
-console.log(resolution());
+console.log(fibonacciSuite());
