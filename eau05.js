@@ -35,9 +35,9 @@ function toSmallLetter(word){
 	return smallLetters
 }
 
-function checkStringInString(str1, str2){
-	for (i = 0 ; i <= str1.length - str2.length ; i++){
-		let testString = slice(str1, i, i + str2.length-1);
+function checkStringInString(string, stringWanted){
+	for (let i = 0 ; i <= string.length - stringWanted.length ; i++){
+		let testString = slice(string, i, i + stringWanted.length-1);
 		
 		if (toSmallLetter(testString) === toSmallLetter(str2)){
 			return true
