@@ -40,13 +40,13 @@ function getFibonacci(num){
 	
 // Error management
 
-function checkArguments(arg){
-	if (arg.length == 1) {
+function checkValidArguments(arg){
+	if (arg.length === 1) {
 		return true;
 	}
 }
 
-function checkArgumentType(arg){
+function checkNumber(arg){
 	if (/^\d+$/.test(arg)){
 		return true;
 	}
@@ -63,12 +63,12 @@ function getArguments() {
 
 // Solving
 
-function fibonacciSuite(){
+function getFibonacciSuite(){
 	const arguments = getArguments();
-	if (!checkArguments(arguments)){
+	if (!checkValidArguments(arguments)){
 		return "erreur : insérez un seul argument"
 	}
-	else if (!checkArgumentType(arguments)) {
+	else if (!checkNumber(arguments)) {
 		return 'erreur: insérez un nombre'
 	}
 	else {
@@ -80,4 +80,4 @@ function fibonacciSuite(){
 
 // Print
 
-console.log(fibonacciSuite());
+console.log(getFibonacciSuite());
