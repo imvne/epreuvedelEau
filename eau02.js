@@ -48,13 +48,13 @@ function getArguments() {
 
 // Solving
 
-function reversed() {
+function getReversed() {
 	const arguments = getArguments();
 	if (!checkArguments(arguments)){
-		return ['erreur'];  
+		return 'erreur';  
 	}
 	else {
-		return reverse(arguments);
+		return reverse(arguments).join('\n');
 	}		
 }
 
@@ -63,9 +63,7 @@ const reversedArguments = reversed();
 
 // Print
 
-for (const arguments of reversedArguments) {
-	console.log(arguments);
-}
+console.log(getReversed());
 
 
 
