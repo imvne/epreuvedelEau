@@ -2,27 +2,23 @@
 
 // Solving
 
-function twoNumbersCombination(){
+function getTwoNumbersCombinationList(){
 	let list = [];
-
+	
 	for (let i = 0; i < 99; i++) {
-		let j = i + 1;
-		for (; j <= 99; j++) {
+		
+		for (let j = i + 1 ; j <= 99 ; j++) {
 			let firstNumber = i.toString().padStart(2, 0);
 			let secondNumber = j.toString().padStart(2, 0);
-			if (i !== 98) {
-				list += firstNumber + " " + secondNumber + ", ";
-			}
-			else {
-				list += firstNumber + " " + secondNumber;
-			}
 			
+			list.push(firstNumber + ' ' + secondNumber)
 		}
 	}
-	return list
+	
+	return list.join(', ')
 }
 
 
 // Print
 
-console.log(twoNumbersCombination());
+console.log(getTwoNumbersCombinationList());
