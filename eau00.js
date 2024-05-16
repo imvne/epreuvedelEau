@@ -1,40 +1,21 @@
 // Combinaison de trois chiffres
 
-// Useful functions
-function isRepeatedNumber(number) {
-	if (number[0] == number[1] || number[1] == number[2] || number[0] == number[2]){
-		return true;
-	}
-	else {
-		return false
-	}
-}
-
-function isSortedNumber (number) {
-	if (number[0] < number[1] && number[1] < number[2]) {
-		return true;
-	}
-	else {
-		return false;
-	}
-}
-
 // Solving
 function threeDigitsCombination(){
-	let combinationList = "";
+	let combinationList = [];
 	
 	for (let i = 0 ; i < 999 ; i++) {
 		let number = i.toString().padStart(3, 0);			
 		
-		if (isRepeatedNumber(number)) {
+		if (number[0] == number[1] || number[1] == number[2] || number[0] == number[2]) {
 			continue;
 		}
-		else if (!isSortedNumber(number)) {
+		else if (number[0] > number[1] || number[1] > number[2]) {
 			continue;
 		}
-		combinationList += number + " ";
+		combinationList.push(number)
 	}
-	return combinationList;
+	return combinationList.join(', ');
 }
 
 
