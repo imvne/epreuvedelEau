@@ -25,7 +25,7 @@ function reverse(arg) {
 	for (let i = arg.length - 1 ; i >= 0 ; i--) {
 		argumentsList.push(arg[i]);
 	}
-	return argumentsList;
+	return argumentsList.join('\n');
 }
 
 
@@ -54,19 +54,11 @@ function getReversed() {
 		return 'erreur';  
 	}
 	else {
-		return reverse(arguments).join('\n');
+		return reverse(arguments);
 	}		
 }
-
-const reversedArguments = reversed();
 
 
 // Print
 
 console.log(getReversed());
-
-
-
-// j'ai print avec for..of afin que ce qui soit retourné dans la fonction reverse soit affiché un élément après l'autre, 
-// sinon ça s'affichait sous forme de tableau en vert
-// je met 'erreur' dans un tableau pour qu'il soit affiché d'un coup et pas lettre après lettre à cause de for..of 
