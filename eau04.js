@@ -48,7 +48,7 @@ function nextPrimeNumber(number) {
 // Error management
 
 function isValidArguments(arguments){
-	if (arguments.length == 1) {
+	if (arguments.length === 1) {
 		return true;
 	}
 	return false
