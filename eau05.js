@@ -19,27 +19,51 @@ function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	}
 }
 
-function toSmallLetter(word){
-	let smallLetters = "";
-	
-	for ( let i = 0 ; i < word.length ; i++){
+function toSmallLetters(string){
+	if (Array.isArray(string)){
+		let smallLetters = [];
+		let smallWord = '';
 		
-		if (word.charCodeAt(i) >= 65 && word.charCodeAt(i) <= 90){
-			smallLetters += String.fromCharCode(word.charCodeAt(i) + 32)
+		for (let j = 0 ; j < string.length ; j++){
+			let word = string[j];
+			for ( let i = 0 ; i < word.length ; i++){
+				if (word.charCodeAt(i) >= 65 && word.charCodeAt(i) <= 90){
+					smallWord += String.fromCharCode(word.charCodeAt(i) + 32)
+				}
+				else {
+					smallWord += word[i]
+				}
+			}
+			smallLetters.push(smallWord)
+			smallWord = '';
+			
 		}
-		else {
-			smallLetters += word[i]
-		}
+		
+		return smallLetters
 	}
-	
-	return smallLetters
+	else {
+		let smallLetters = "";
+		for ( let i = 0 ; i < string.length ; i++){
+			
+			if (string.charCodeAt(i) >= 65 && string.charCodeAt(i) <= 90){
+				smallLetters += String.fromCharCode(string.charCodeAt(i) + 32)
+			}
+			else {
+				smallLetters += string[i]
+			}
+		}
+		return smallLetters
+	}
 }
 
-function checkStringInString(string, stringWanted){
+function checkStringInString(strings){
+	const string = strings[0];
+	const stringWanted = strings[1];
+	
 	for (let i = 0 ; i <= string.length - stringWanted.length ; i++){
 		let testString = slice(string, i, i + stringWanted.length-1);
 		
-		if (toSmallLetter(testString) === toSmallLetter(stringWanted)){
+		if (toSmallLetters(testString) === toSmallLetters(stringWanted)){
 			return true
 		}
 	}
@@ -49,8 +73,8 @@ function checkStringInString(string, stringWanted){
 
 // Error management
 
-function isValidArguments(arg){
-	if (arg.length == 2) {
+function isValidArguments(arguments){
+	if (arguments.length === 2) {
 		return true;
 	}
 	return false
@@ -67,7 +91,7 @@ function getArguments() {
 
 // Solving
 
-function stringInString(){
+function isStringInString(){
 	const argument = getArguments();
 	
 	if (!isValidArguments(argument)){
@@ -75,11 +99,11 @@ function stringInString(){
 	}
 	
 	else {
-		return checkStringInString(argument[0], argument[1])
+		return checkStringInString(argument)
 	}
 }
 
 
 // Print
 
-console.log(stringInString());
+console.log(isStringInString());
