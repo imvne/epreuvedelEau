@@ -2,7 +2,7 @@
 
 // Useful functions
 
-function slice(arguments, firstIndex, endIndex){
+function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	if (Array.isArray(arguments)){
 		let argumentsSliced = [];
 		for (let i = firstIndex ; i <= endIndex ; i++){
@@ -31,8 +31,8 @@ function reverse(arg) {
 
 // Error management
 
-function checkValidArguments(arg){
-	if (arg.length > 0) {
+function isValidArguments(arguments){
+	if (arguments.length > 0) {
 		return true;
 	}
 }
@@ -41,7 +41,7 @@ function checkValidArguments(arg){
 // Parsing
 
 function getArguments() {
-	let arguments = slice(process.argv, 2, process.argv.length-1)
+	let arguments = slice(process.argv, 2)
 	return arguments;
 }
 
@@ -50,7 +50,7 @@ function getArguments() {
 
 function getReversed() {
 	const arguments = getArguments();
-	if (!checkValidArguments(arguments)){
+	if (!isValidArguments(arguments)){
 		return 'erreur';  
 	}
 	else {
