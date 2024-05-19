@@ -20,7 +20,6 @@ function slice(arguments, firstIndex, endIndex = arguments.length-1){
 }
 
 function checkPrimeNumber(number) {
-	
 	if (number <= 1){
 		return false
 	}
@@ -32,17 +31,17 @@ function checkPrimeNumber(number) {
 			return false // pas nombre premier
 		}
 	}
+	
 	return true // nombre premier
 }
 
 
 function nextPrimeNumber(number) {
-	for (let j = number ;  ; j++) {
-		
-		if (checkPrimeNumber(j)) { 
-			return j;
-		}
-	}	
+	while (!checkPrimeNumber(number)){
+		number ++
+	}
+	
+	return number	
 }
 
 
@@ -55,11 +54,11 @@ function isValidArguments(arguments){
 	return false
 }
 
-function isPositiveNumber(arguments){
+function isPositiveInteger(arguments){
 	const numberValue = Number(arguments);
 	
-	if (!isNaN(numberValue) && numberValue > 0) {
-	    return true;
+	if (numberValue > 0 && Number.isInteger(numberValue)){ 
+		return true;
 	}
 }
 
@@ -80,8 +79,8 @@ function getNextPrimeNumber(){
 	if (!isValidArguments(argument)){
 		return 'erreur : insérez un seul argument'
 	}
-	else if (!isPositiveNumber(argument)){
-		return 'erreur: insérez un nombre positif'
+	else if (!isPositiveInteger(argument)){
+		return 'erreur: insérez un nombre entier positif'
 	}
 	else {
 		return nextPrimeNumber(parseInt(argument))
