@@ -2,7 +2,7 @@
 
 // Useful functions
 
-function slice(arguments, firstIndex, endIndex){
+function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	if (Array.isArray(arguments)){
 		let argumentsSliced = [];
 		for (let i = firstIndex ; i <= endIndex ; i++){
@@ -39,7 +39,7 @@ function checkStringInString(string, stringWanted){
 	for (let i = 0 ; i <= string.length - stringWanted.length ; i++){
 		let testString = slice(string, i, i + stringWanted.length-1);
 		
-		if (toSmallLetter(testString) === toSmallLetter(str2)){
+		if (toSmallLetter(testString) === toSmallLetter(stringWanted)){
 			return true
 		}
 	}
@@ -49,15 +49,8 @@ function checkStringInString(string, stringWanted){
 
 // Error management
 
-function checkArguments(arg){
+function isValidArguments(arg){
 	if (arg.length == 2) {
-		return true;
-	}
-	return false
-}
-
-function checkArgumentType(arg){
-	if (/^[a-zA-Z\s]+$/.test(arg)){
 		return true;
 	}
 	return false
@@ -67,7 +60,7 @@ function checkArgumentType(arg){
 // Parsing
 
 function getArguments() {
-	let arguments = slice(process.argv, 2, process.argv.length-1);
+	let arguments = slice(process.argv, 2);
 	return arguments
 }
 
@@ -76,17 +69,13 @@ function getArguments() {
 
 function stringInString(){
 	const argument = getArguments();
-	const argumentsString = argument.join(' ')
-	if (!checkArguments(argument)){
+	
+	if (!isValidArguments(argument)){
 		return 'erreur : insérez deux arguments'
 	}
-	else if (!checkArgumentType(argumentsString)){
-		return 'erreur: insérez uniquement des lettres'
-	}
+	
 	else {
-		const string1 = argument[0];
-		const string2 = argument[1];
-		return checkStringInString(string1, string2)
+		return checkStringInString(argument[0], argument[1])
 	}
 }
 
