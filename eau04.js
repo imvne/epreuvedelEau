@@ -19,14 +19,7 @@ function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	}
 }
 
-function getRoundSquareRoot() {
-	const squareRoot = Math.sqrt(getArguments());
-	return Math.round(squareRoot);
-}
-
-
 function checkPrimeNumber(number) {
-	const roundSquareRoot = getRoundSquareRoot();
 	
 	if (number <= 1){
 		return false
@@ -34,7 +27,7 @@ function checkPrimeNumber(number) {
 	if (number === 2){
 		return true
 	}
-	for (let i = 2 ; i <= roundSquareRoot ; i++) {
+	for (let i = 2 ; i <= number / 2 ; i++) {
 		if (number % i === 0) {
 			return false // pas nombre premier
 		}
@@ -91,8 +84,7 @@ function nextPrimeNumber(){
 		return 'erreur: insérez un nombre positif'
 	}
 	else {
-		const number = parseInt(argument);
-		return getNextPrimeNumber(number)
+		return getNextPrimeNumber(parseInt(argument))
 	}
 	
 }
