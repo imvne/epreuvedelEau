@@ -31,7 +31,7 @@ function reverse(arg) {
 
 // Error management
 
-function checkArguments(arg){
+function checkValidArguments(arg){
 	if (arg.length > 0) {
 		return true;
 	}
@@ -50,7 +50,7 @@ function getArguments() {
 
 function getReversed() {
 	const arguments = getArguments();
-	if (!checkArguments(arguments)){
+	if (!checkValidArguments(arguments)){
 		return 'erreur';  
 	}
 	else {
