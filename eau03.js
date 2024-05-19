@@ -2,7 +2,7 @@
 
 // Useful functions
 
-function slice(arguments, firstIndex, endIndex){
+function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	if (Array.isArray(arguments)){
 		let argumentsSliced = [];
 		for (let i = firstIndex ; i <= endIndex ; i++){
@@ -40,14 +40,16 @@ function getFibonacci(num){
 	
 // Error management
 
-function checkValidArguments(arg){
-	if (arg.length === 1) {
+function isValidArguments(arguments){
+	if (arguments.length === 1) {
 		return true;
 	}
 }
 
-function checkNumber(arg){
-	if (/^\d+$/.test(arg)){
+function isPositiveInteger(arguments){
+	const numberValue = Number(arguments);
+	
+	if (numberValue > 0 && Number.isInteger(numberValue)){
 		return true;
 	}
 }
@@ -56,20 +58,20 @@ function checkNumber(arg){
 // Parsing
 
 function getArguments() {
-	let arguments = slice(process.argv, 2, process.argv.length-1);
+	let arguments = slice(process.argv, 2);
 	return arguments
 }
 
 
 // Solving
 
-function getFibonacciSuite(){
+function getFibonacciSuiteNumber(){
 	const arguments = getArguments();
-	if (!checkValidArguments(arguments)){
+	if (!isValidArguments(arguments)){
 		return "erreur : insérez un seul argument"
 	}
-	else if (!checkNumber(arguments)) {
-		return 'erreur: insérez un nombre'
+	else if (!isPositiveInteger(arguments)) {
+		return 'erreur: insérez un nombre entier positif'
 	}
 	else {
 		const number = parseInt(getArguments());
@@ -80,4 +82,4 @@ function getFibonacciSuite(){
 
 // Print
 
-console.log(getFibonacciSuite());
+console.log(getFibonacciSuiteNumber());
