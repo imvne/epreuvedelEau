@@ -19,10 +19,11 @@ function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	}
 }
 
-function getFibonacci(num){
+
+function getFibonacci(arguments){
+	const num = parseInt(arguments);
 	let fibonacciSuiteArray = [0,1];	
 	let nextFibonacciNumber;
-	let lastIndex = fibonacciSuiteArray.length - 1;
 	
 	if (num === 0){
 		return 0
@@ -33,9 +34,10 @@ function getFibonacci(num){
 			nextFibonacciNumber = fibonacciSuiteArray[i] + fibonacciSuiteArray[i - 1];
 			fibonacciSuiteArray.push(nextFibonacciNumber);
 		};
-		return(fibonacciSuiteArray[lastIndex]);
+		
+		return(fibonacciSuiteArray[fibonacciSuiteArray.length - 1]);
 	}
-	}
+}
 
 	
 // Error management
@@ -49,7 +51,7 @@ function isValidArguments(arguments){
 function isPositiveInteger(arguments){
 	const numberValue = Number(arguments);
 	
-	if (numberValue > 0 && Number.isInteger(numberValue)){
+	if (numberValue >= 0 && Number.isInteger(numberValue)){ //inclus le zéro
 		return true;
 	}
 }
@@ -74,8 +76,7 @@ function getFibonacciSuiteNumber(){
 		return 'erreur: insérez un nombre entier positif'
 	}
 	else {
-		const number = parseInt(getArguments());
-		return getFibonacci(number);
+		return getFibonacci(arguments);
 	}
 }
 
