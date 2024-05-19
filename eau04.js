@@ -36,7 +36,7 @@ function checkPrimeNumber(number) {
 }
 
 
-function getNextPrimeNumber(number) {
+function nextPrimeNumber(number) {
 	for (let j = number ;  ; j++) {
 		
 		if (checkPrimeNumber(j)) { 
@@ -74,7 +74,7 @@ function getArguments() {
 
 // Solving
 
-function nextPrimeNumber(){
+function getNextPrimeNumber(){
 	const argument = getArguments();
 	
 	if (!isValidArguments(argument)){
@@ -84,7 +84,7 @@ function nextPrimeNumber(){
 		return 'erreur: insérez un nombre positif'
 	}
 	else {
-		return getNextPrimeNumber(parseInt(argument))
+		return nextPrimeNumber(parseInt(argument))
 	}
 	
 }
@@ -92,4 +92,4 @@ function nextPrimeNumber(){
 
 // Print
 
-console.log(nextPrimeNumber());
+console.log(getNextPrimeNumber());
