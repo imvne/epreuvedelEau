@@ -2,7 +2,7 @@
 
 // Useful functions
 
-function slice(arguments, firstIndex, endIndex){
+function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	if (Array.isArray(arguments)){
 		let argumentsSliced = [];
 		for (let i = firstIndex ; i <= endIndex ; i++){
@@ -55,25 +55,26 @@ function getNextPrimeNumber(number) {
 
 // Error management
 
-function checkArguments(arg){
-	if (arg.length == 1) {
+function isValidArguments(arguments){
+	if (arguments.length == 1) {
 		return true;
 	}
 	return false
 }
 
-function checkArgumentType(arg){
-	if (/^\d+$/.test(arg)){
-		return true;
+function isPositiveNumber(arguments){
+	const numberValue = Number(arguments);
+	
+	if (!isNaN(numberValue) && numberValue > 0) {
+	    return true;
 	}
-	return false
 }
 
 
 // Parsing
 
 function getArguments() {
-	let arguments = slice(process.argv, 2, process.argv.length-1);
+	let arguments = slice(process.argv, 2);
 	return arguments
 }
 
@@ -83,11 +84,11 @@ function getArguments() {
 function nextPrimeNumber(){
 	const argument = getArguments();
 	
-	if (!checkArguments(argument)){
+	if (!isValidArguments(argument)){
 		return 'erreur : insérez un seul argument'
 	}
-	else if (!checkArgumentType(argument)){
-		return 'erreur: insérez un nombre entier positif'
+	else if (!isPositiveNumber(argument)){
+		return 'erreur: insérez un nombre positif'
 	}
 	else {
 		const number = parseInt(argument);
