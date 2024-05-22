@@ -2,23 +2,7 @@
 
 // Useful functions
 
-function toBigLetter(word) {
-	let bigLetters = "";
-	
-	for ( let i = 0 ; i < word.length ; i++){
-		
-		if (word.charCodeAt(0) >= 97 && word.charCodeAt(0) <= 122){
-			bigLetters += String.fromCharCode(word.charCodeAt(i) - 32)
-		}
-		else {
-			bigLetters += word[i]
-		}
-	}
-	
-	return bigLetters
-}
-
-function slice(arguments, firstIndex, endIndex){
+function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	if (Array.isArray(arguments)){
 		let argumentsSliced = [];
 		for (let i = firstIndex ; i <= endIndex ; i++){
@@ -35,62 +19,102 @@ function slice(arguments, firstIndex, endIndex){
 	}
 }
 
-function getUpperFirstLetter(arg){
-	let array = arg[0].split(' ');
-	let upperFirstLetterArray = "";
+function toBigLetters(arguments){
+	if (Array.isArray(arguments)){
+		let bigLetters = [];
+		let bigWord = '';
+		
+		for (let j = 0 ; j < arguments.length ; j++){
+			let word = arguments[j];
+			for ( let i = 0 ; i < word.length ; i++){
+				if (word.charCodeAt(i) >= 97 && word.charCodeAt(i) <= 122){
+					bigWord += String.fromCharCode(word.charCodeAt(i) - 32)
+				}
+				else {
+					bigWord += word[i]
+				}
+			}
+			bigLetters.push(bigWord)
+			bigWord = '';
+			
+		}
+		
+		return bigLetters
+	}
+	else {
+		let bigLetters = "";
+		for ( let i = 0 ; i < arguments.length ; i++){
+			
+			if (arguments.charCodeAt(i) >= 97 && arguments.charCodeAt(i) <= 122){
+				bigLetters += String.fromCharCode(arguments.charCodeAt(i) - 32)
+			}
+			else {
+				bigLetters += arguments[i]
+			}
+		}
+		return bigLetters
+	}
+}
+
+function upperFirstLetter(string){
+	let arrayString = string[0].split(' ');
+	let upperFirstLetterString = "";
 	let upperFirstLetter = "";
 	
-	for (element of array){
-		upperFirstLetter = toBigLetter(element[0]) + slice(element, 1, element.length-1)
-		upperFirstLetterArray += upperFirstLetter + ' '
+	for (element of arrayString){
+		upperFirstLetter = toBigLetters(element[0]) + slice(element, 1)
+		upperFirstLetterString += upperFirstLetter + ' '
 	}
 	
-	return upperFirstLetterArray
+	return upperFirstLetterString
 }
 
 
 // Error management
 
-function checkArguments(arg){
-	if (arg.length === 1) {
+function isValidArguments(arguments){
+	if (arguments.length === 1) {
 		return true;
 	}
 	return false
 }
 
-function checkArgumentType(arg){
-	if (/^\D*$/.test(arg)){
-		return true;
+function isNotANumber(arguments){
+	for (char of arguments){
+		
+		if (!isNaN(char)){
+			return false;
+		}
 	}
-	return false
+	return true
 }
 
 
 // Parsing
 
 function getArguments() {
-	let arguments = slice(process.argv, 2, process.argv.length-1)
+	let arguments = slice(process.argv, 2)
 	return arguments
 }
 
 
 // Solving
 
-function upperFirstLetter(){
-	const argument = getArguments();
+function getUpperFirstLetterString(){
+	const arguments = getArguments();
 	
-	if (!checkArguments(argument)){
+	if (!isValidArguments(arguments)){
 		return "erreur : n'insérez qu'un argument"
 	}
-	else if (!checkArgumentType(argument)){
+	else if (!isNotANumber(arguments)){
 		return "erreur: n'insérez pas de nombres"
 	}
 	else {
-		return getUpperFirstLetter(argument)
+		return upperFirstLetter(arguments)
 	}
 }
 
 
 // Print
 
-console.log(upperFirstLetter());
+console.log(getUpperFirstLetterString());
