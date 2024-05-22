@@ -3,7 +3,7 @@
 
 // Useful functions
 
-function slice(arguments, firstIndex, endIndex){
+function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	if (Array.isArray(arguments)){
 		let argumentsSliced = [];
 		for (let i = firstIndex ; i <= endIndex ; i++){
@@ -28,7 +28,7 @@ function charToNumber(arg){
 	return numberArr
 }
 
-function sortNumbers(arg, firstNum, lastNum){
+function sortNumbers(arg, firstNum, lastNum){ // essayer de faire sans trier
 	if (lastNum - firstNum < 2){
 		return arg
 	}
@@ -53,12 +53,12 @@ function sortNumbers(arg, firstNum, lastNum){
 	
 }
 
-function getAbsoluteMinDifference(arg){
+function absoluteMinDifference(arguments){
 	let minDifference = undefined ;
 	let numbersDifferences;
 	
-	for (let i = 0 ; i <= arg.length-2 ; i++){
-		numbersDifferences = arg[i+1] - arg[i];
+	for (let i = 0 ; i <= arguments.length-2 ; i++){
+		numbersDifferences = arguments[i+1] - arguments[i];
 		
 		if (minDifference === undefined || numbersDifferences <= minDifference){
 			minDifference = numbersDifferences;
@@ -71,16 +71,19 @@ function getAbsoluteMinDifference(arg){
 
 // Error management
 
-function checkArguments(arg){
-	if (arg.length >= 3) {
+function isValidArguments(arguments){
+	if (arguments.length >= 3) {
 		return true;
 	}
 	return false
 }
 
-function checkArgumentType(arg){
-	for (element of arg){
-		if (!/^[-+]?\d+$/.test(element)){
+function isIntegers(arguments){
+	
+	for (character of arguments){
+		const numberValue = Number(character);
+		
+		if (!Number.isInteger(numberValue)){ 
 			return false;
 		}
 	}
@@ -91,7 +94,7 @@ function checkArgumentType(arg){
 // Parsing
 
 function getArguments(){
-	const arguments = slice(process.argv, 2, process.argv.length-1) 
+	const arguments = slice(process.argv, 2) 
 	return arguments
 	
 }
@@ -99,23 +102,23 @@ function getArguments(){
 
 // Solving
 
-function absoluteMinDifference(){
-	const argument = getArguments();
-	const numbers = charToNumber(argument)
+function getAbsoluteMinDifference(){
+	const arguments = getArguments();
+	const numbers = charToNumber(arguments)
 	const numbersSorted = sortNumbers(numbers, 0, numbers.length);
 	
-	if (!checkArguments(argument)){
+	if (!isValidArguments(arguments)){
 		return 'erreur : insérez au moins trois arguments'
 	}
-	else if (!checkArgumentType(argument)){
-		return "erreur : n'insérez que des nombres"
+	else if (!isIntegers(arguments)){
+		return "erreur : n'insérez que des nombres entiers"
 	}
 	else {
-		return getAbsoluteMinDifference(numbersSorted)
+		return absoluteMinDifference(numbers)
 	}
 }
 
 
 // Print
 
-console.log(absoluteMinDifference());
+console.log(getAbsoluteMinDifference());
