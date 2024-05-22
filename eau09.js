@@ -2,7 +2,7 @@
 
 // Useful functions
 
-function slice(arguments, firstIndex, endIndex){
+function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	if (Array.isArray(arguments)){
 		let argumentsSliced = [];
 		for (let i = firstIndex ; i <= endIndex ; i++){
@@ -19,50 +19,53 @@ function slice(arguments, firstIndex, endIndex){
 	}
 }
 
-function sortMinMax(arg1, arg2){
-	let minMaxSorted = [];
+function sortTwoNumbers(firstArgument, secondArgument){
+	let minMaxSortedArray = [];
 	
-	if (arg1 < arg2){
-		let min = arg1;
-		let max = arg2;
-		minMaxSorted.push(min, max)
+	if (firstArgument < secondArgument){
+		let min = firstArgument;
+		let max = secondArgument;
+		minMaxSortedArray.push(min, max)
 	}
 	else {
-		let min = arg2;
-		let max = arg1;
-		minMaxSorted.push(min, max)
+		let min = secondArgument;
+		let max = firstArgument;
+		minMaxSortedArray.push(min, max)
 	}
-	return minMaxSorted
+	return minMaxSortedArray
 }
 
-function getBetweenMinMax(arg1, arg2){
-	const minMaxSorted = sortMinMax(arg1, arg2);
+function betweenMinMax(arguments){
+	const minMaxSorted = sortTwoNumbers(arguments[0], arguments[1]);
 	
 	const min = parseInt(minMaxSorted[0]);
 	const max = parseInt(minMaxSorted[1]);
 	
-	let betweenMinMaxArr = "";
+	let betweenMinMaxString = "";
 	
-	for (let i = 0; i < max-min; i++){
-		betweenMinMaxArr += min+i + " "
+	for (let i = 0 ; i < max-min ; i++){
+		betweenMinMaxString += min + i + " "
 	}
-	return betweenMinMaxArr
+	return betweenMinMaxString
 }
 
 
 // Error management
 
-function checkArguments(arg){
-	if (arg.length === 2) {
+function isValidArguments(arguments){
+	if (arguments.length === 2) {
 		return true;
 	}
 	return false
 }
 
-function checkArgumentType(arg){
-	for (element of arg){
-		if (!/^\d+$/.test(element)){
-			return false;
+function isANumber(arguments){
+	let string = arguments.join('')
+	
+	for (character of string){
+		
+		if (isNaN(character)){
+			return false
 		}
 	}
 	return true
@@ -72,7 +75,7 @@ function checkArgumentType(arg){
 // Parsing
 
 function getArguments(){
-	const arguments = slice(process.argv, 2, process.argv.length-1) 
+	const arguments = slice(process.argv, 2) 
 	return arguments
 	
 }
@@ -80,20 +83,20 @@ function getArguments(){
 
 // Solving
 
-function betweenMinMax(){
-	const argument = getArguments();
-	if (!checkArguments(argument)){
+function getNumbersBetweenMinMax(){
+	const arguments = getArguments();
+	if (!isValidArguments(arguments)){
 		return 'erreur : insérez deux arguments'
 	}
-	else if (!checkArgumentType(argument)){
+	else if (!isANumber(arguments)){
 		return "erreur : n'insérez que des nombres"
 	}
 	else {
-		return getBetweenMinMax(argument[0], argument[1])
+		return betweenMinMax(arguments)
 	}
 }
 
 
 // Print
 
-console.log(betweenMinMax())
+console.log(getNumbersBetweenMinMax())
