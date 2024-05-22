@@ -2,7 +2,7 @@
 
 // Useful functions
 
-function slice(arguments, firstIndex, endIndex){
+function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	if (Array.isArray(arguments)){
 		let argumentsSliced = [];
 		for (let i = firstIndex ; i <= endIndex ; i++){
@@ -19,23 +19,23 @@ function slice(arguments, firstIndex, endIndex){
 	}
 }
 
-function getWantedIndex(arr){
-	let phrase = slice(arr, 0, arr.length-2)
-	let wantedArg = arr[arr.length-1]
+function wantedIndex(array){ // mettre en parametre le tableau et l'index recherché
+	let searchArray = slice(array, 0, array.length-2)
+	let wantedIndex = array[array.length-1]
 	
-	for (let i = 0 ; i < phrase.length ; i++){
-		if (phrase[i] === wantedArg){
+	for (let i = 0 ; i < searchArray.length ; i++){
+		if (searchArray[i] === wantedIndex){
 			return i;
 		}
 	}
-	return "erreur : l'index wanted n'est pas ici"
+	return "erreur : l'élément cherché n'est pas ici"
 }
 
 
 // Error management
 
-function checkArguments(arg){
-	if (arg.length >= 2) {
+function isValidArguments(arguments){
+	if (arguments.length >= 2) {
 		return true;
 	}
 	return false
@@ -45,7 +45,7 @@ function checkArguments(arg){
 // Parsing
 
 function getArguments(){
-	const argumments = slice(process.argv, 2, process.argv.length-1) 
+	const argumments = slice(process.argv, 2) 
 	return argumments
 	
 }
@@ -53,18 +53,18 @@ function getArguments(){
 
 // Solving
 
-function indexWanted(){
+function getWantedIndex(){
 	const argument = getArguments();
 	
-	if (!checkArguments(argument)){
+	if (!isValidArguments(argument)){
 		return 'erreur : insérez au moins deux arguments'
 	}
 	else {
-		return getWantedIndex(argument)
+		return wantedIndex(argument)
 	}
 }
 
 
 // Print
 
-console.log(indexWanted())
+console.log(getWantedIndex())
