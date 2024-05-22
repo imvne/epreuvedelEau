@@ -2,6 +2,23 @@
 
 // Useful functions
 
+function slice(arguments, firstIndex, endIndex = arguments.length-1){
+	if (Array.isArray(arguments)){
+		let argumentsSliced = [];
+		for (let i = firstIndex ; i <= endIndex ; i++){
+			argumentsSliced.push(arguments[i])
+		}
+		return argumentsSliced
+	}
+	else {
+		let argumentsSliced = "";
+		for (let i = firstIndex ; i <= endIndex ; i++){
+			argumentsSliced += arguments[i]
+		}
+		return argumentsSliced
+	}
+}
+
 function toBigLetters(arguments){
 	if (Array.isArray(arguments)){
 		let bigLetters = [];
@@ -94,7 +111,7 @@ function isNotANumber(arguments){
 // Parsing
 
 function getArguments() {
-	let arguments = process.argv.slice(2);
+	let arguments = slice(process.argv, 2);
 	return arguments
 }
 
