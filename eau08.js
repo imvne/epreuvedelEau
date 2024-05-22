@@ -2,7 +2,7 @@
 
 // Useful functions
 
-function slice(arguments, firstIndex, endIndex){
+function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	if (Array.isArray(arguments)){
 		let argumentsSliced = [];
 		for (let i = firstIndex ; i <= endIndex ; i++){
@@ -19,7 +19,7 @@ function slice(arguments, firstIndex, endIndex){
 	}
 }
 
-function checkNumberOnly(arg){
+function isNumberOnly(arg){
 	let element = arg[0]
 	
 	for (let i = 0; i < element.length ; i++){
@@ -33,8 +33,8 @@ function checkNumberOnly(arg){
 
 // Error management
 
-function checkArguments(arg){
-	if (arg.length === 1) {
+function isValidArguments(arguments){
+	if (arguments.length === 1) {
 		return true;
 	}
 	return false
@@ -43,7 +43,7 @@ function checkArguments(arg){
 // Parsing
 
 function getArguments() {
-	let arguments = slice(process.argv, 2, process.argv.length-1)
+	let arguments = slice(process.argv, 2)
 	return arguments
 }
 
@@ -51,13 +51,13 @@ function getArguments() {
 // Solving
 
 function numberOnly(){
-	const argument = getArguments();
+	const arguments = getArguments();
 	
-	if (!checkArguments(argument)){
+	if (!isValidArguments(arguments)){
 		return "erreur : n'insérez qu'un argument"
 	}
 	else {
-		return checkNumberOnly(argument)
+		return isNumberOnly(arguments)
 	}
 }
 
