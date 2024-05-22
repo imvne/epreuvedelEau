@@ -56,7 +56,7 @@ function toSmallLetters(string){
 	}
 }
 
-function checkStringInString(strings){
+function stringInString(strings){
 	const string = strings[0];
 	const stringWanted = strings[1];
 	
@@ -99,7 +99,7 @@ function isStringInString(){
 	}
 	
 	else {
-		return checkStringInString(argument)
+		return stringInString(argument)
 	}
 }
 
