@@ -19,13 +19,13 @@ function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	}
 }
 
-function toSmallLetters(string){
-	if (Array.isArray(string)){
+function toSmallLetters(arguments){
+	if (Array.isArray(arguments)){
 		let smallLetters = [];
 		let smallWord = '';
 		
-		for (let j = 0 ; j < string.length ; j++){
-			let word = string[j];
+		for (let j = 0 ; j < arguments.length ; j++){
+			let word = arguments[j];
 			for ( let i = 0 ; i < word.length ; i++){
 				if (word.charCodeAt(i) >= 65 && word.charCodeAt(i) <= 90){
 					smallWord += String.fromCharCode(word.charCodeAt(i) + 32)
@@ -43,13 +43,13 @@ function toSmallLetters(string){
 	}
 	else {
 		let smallLetters = "";
-		for ( let i = 0 ; i < string.length ; i++){
+		for ( let i = 0 ; i < arguments.length ; i++){
 			
-			if (string.charCodeAt(i) >= 65 && string.charCodeAt(i) <= 90){
-				smallLetters += String.fromCharCode(string.charCodeAt(i) + 32)
+			if (arguments.charCodeAt(i) >= 65 && arguments.charCodeAt(i) <= 90){
+				smallLetters += String.fromCharCode(arguments.charCodeAt(i) + 32)
 			}
 			else {
-				smallLetters += string[i]
+				smallLetters += arguments[i]
 			}
 		}
 		return smallLetters
