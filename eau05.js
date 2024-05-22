@@ -92,14 +92,14 @@ function getArguments() {
 // Solving
 
 function isStringInString(){
-	const argument = getArguments();
+	const arguments = getArguments();
 	
-	if (!isValidArguments(argument)){
+	if (!isValidArguments(arguments)){
 		return 'erreur : insérez deux arguments'
 	}
 	
 	else {
-		return stringInString(argument)
+		return stringInString(arguments)
 	}
 }
 
