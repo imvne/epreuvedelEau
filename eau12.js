@@ -3,7 +3,7 @@
 
 // Useful functions
 
-function slice(arguments, firstIndex, endIndex){
+function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	if (Array.isArray(arguments)){
 		let argumentsSliced = [];
 		for (let i = firstIndex ; i <= endIndex ; i++){
@@ -28,35 +28,38 @@ function charToNumber(arg){
 	return numberArr
 }
 
-function bubblesort(array){
-	for (let i = 0 ; i < array.length-1 ; i++){
+function toBubbleSort(numbers){
+	for (let i = 0 ; i < numbers.length-1 ; i++){
 		
-		for (let j = 0 ; j < array.length-1 ; j++){
-			if (array[j] > array[j+1]){
-				let temp = array[j]
-				array[j] = array[j+1]
-				array[j+1] = temp
+		for (let j = 0 ; j < numbers.length-1 ; j++){
+			if (numbers[j] > numbers[j+1]){
+				let temp = numbers[j]
+				numbers[j] = numbers[j+1]
+				numbers[j+1] = temp
 			}
 		}
 		
 	}
-	return array.join(' ')
+	return numbers.join(' ')
 }
 
 // Error management
 
-function checkArgument(arg){
-	if (arg.length < 2){
-		return false
+function isValidArguments(arguments){
+	if (arguments.length < 2) {
+		return true;
 	}
-	return true
+	return false
 }
 
-function checkArgumentType(arg){
-	for (element of arg){
-		if (!/^\d+$/.test(element)){
-		return false
-	}
+function isANumber(arguments){
+	let string = arguments.join('')
+	
+	for (character of string){
+		
+		if (isNaN(character)){
+			return false
+		}
 	}
 	return true
 }
@@ -65,29 +68,28 @@ function checkArgumentType(arg){
 // Parsing
 
 function getArguments(){
-	let arguments = slice(process.argv, 2, process.argv.length-1)
+	let arguments = slice(process.argv, 2)
 	return arguments
 }
 
 
 // Solving
 
-function bubbleSorted(){
-	const argument = getArguments();
+function getBubbleSorted(){
+	const arguments = getArguments();
 	
-	if (!checkArgument(argument)){
+	if (!isValidArguments(arguments)){
 		return 'erreur : insérez au moins deux arguments'
 	}
-	else if (!checkArgumentType(argument)){
+	else if (!isANumber(arguments)){
 		return "erreur : n'insérez que des nombres"
 	}
 	else {
-		const numbers = charToNumber(argument);
-		return bubblesort(numbers)
+		return toBubbleSort(charToNumber(arguments))
 	}
 }
 
 
 // Print
 
-console.log(bubbleSorted());
+console.log(getBubbleSorted());
