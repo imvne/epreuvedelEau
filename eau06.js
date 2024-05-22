@@ -98,10 +98,12 @@ function isValidArguments(arguments){
 }
 
 function isNotANumber(arguments){
-	for (char of arguments){
+	let string = arguments.join('')
+	
+	for (character of string){
 		
-		if (!isNaN(char)){
-			return false;
+		if (!isNaN(character)){
+			return false
 		}
 	}
 	return true
