@@ -20,52 +20,38 @@ function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	}
 }
 
-function charToNumber(arg){
-	let numberArr = [];
-	for (a of arg){
-		numberArr.push(parseInt(a))
+function charactersToNumbers(arguments){
+	let numbersArray = [];
+	for (string of arguments){
+		numbersArray.push(parseInt(string))
 	}
-	return numberArr
+	return numbersArray
 }
 
-function sortNumbers(arg, firstNum, lastNum){ // essayer de faire sans trier
-	if (lastNum - firstNum < 2){
-		return arg
-	}
-	else {
-		let pivot = lastNum-1;
-		let cursor = firstNum;
-		for (let i = firstNum ; i < lastNum-1; i++){
-			if (arg[i] <= arg[pivot]){
-				let temp = arg[i];
-				arg[i] = arg[cursor]
-				arg[cursor] = temp;
-				cursor ++;
-			}
-		}
-		let temp = arg[pivot];
-		arg[pivot] = arg[cursor];
-		arg[cursor] = temp;
-		sortNumbers(arg, firstNum, cursor);
-		sortNumbers(arg, cursor + 1, lastNum);
-		return arg
-	}
-	
-}
-
-function absoluteMinDifference(arguments){
-	let minDifference = undefined ;
+function smallestAbsoluteDifference(arguments){
+	const array = charactersToNumbers(arguments)
+	let smallestDifference = undefined ;
 	let numbersDifferences;
 	
-	for (let i = 0 ; i <= arguments.length-2 ; i++){
-		numbersDifferences = arguments[i+1] - arguments[i];
+	for (let i = 0 ; i < array.length ; i++){
 		
-		if (minDifference === undefined || numbersDifferences <= minDifference){
-			minDifference = numbersDifferences;
+		for (let j = 0 ; j < array.length ; j++){
+			if(i === j){
+				continue
+			}
+			else {
+				let result = array[i] - array[j];
+				numbersDifferences = Math.abs(result);
+			}
+			
+			if (smallestDifference === undefined || numbersDifferences <= smallestDifference){
+				smallestDifference = numbersDifferences;
+			}
+			
 		}
 		
 	}
-	return minDifference;
+	return smallestDifference;
 }
 
 
@@ -102,10 +88,8 @@ function getArguments(){
 
 // Solving
 
-function getAbsoluteMinDifference(){
+function getSmallestAbsoluteDifference(){
 	const arguments = getArguments();
-	const numbers = charToNumber(arguments)
-	const numbersSorted = sortNumbers(numbers, 0, numbers.length);
 	
 	if (!isValidArguments(arguments)){
 		return 'erreur : insérez au moins trois arguments'
@@ -114,11 +98,11 @@ function getAbsoluteMinDifference(){
 		return "erreur : n'insérez que des nombres entiers"
 	}
 	else {
-		return absoluteMinDifference(numbers)
+		return smallestAbsoluteDifference(arguments)
 	}
 }
 
 
 // Print
 
-console.log(getAbsoluteMinDifference());
+console.log(getSmallestAbsoluteDifference());
