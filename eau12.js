@@ -20,12 +20,12 @@ function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	}
 }
 
-function charToNumber(arg){
-	let numberArr = [];
-	for (a of arg){
-		numberArr.push(parseInt(a))
+function charactersToNumbers(arguments){
+	let numbersArray = [];
+	for (string of arguments){
+		numbersArray.push(parseInt(string))
 	}
-	return numberArr
+	return numbersArray
 }
 
 function toBubbleSort(numbers){
@@ -46,7 +46,7 @@ function toBubbleSort(numbers){
 // Error management
 
 function isValidArguments(arguments){
-	if (arguments.length < 2) {
+	if (arguments.length > 2) {
 		return true;
 	}
 	return false
@@ -85,7 +85,7 @@ function getBubbleSorted(){
 		return "erreur : n'insérez que des nombres"
 	}
 	else {
-		return toBubbleSort(charToNumber(arguments))
+		return toBubbleSort(charactersToNumbers(arguments))
 	}
 }
 
