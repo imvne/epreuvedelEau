@@ -28,8 +28,7 @@ function charactersToNumbers(arguments){
 	return numbersArray
 }
 
-function smallestAbsoluteDifference(arguments){
-	const array = charactersToNumbers(arguments)
+function smallestAbsoluteDifference(array){
 	let smallestDifference = undefined ;
 	let numbersDifferences;
 	
@@ -98,7 +97,7 @@ function getSmallestAbsoluteDifference(){
 		return "erreur : n'insérez que des nombres entiers"
 	}
 	else {
-		return smallestAbsoluteDifference(arguments)
+		return smallestAbsoluteDifference(charactersToNumbers(arguments))
 	}
 }
 
