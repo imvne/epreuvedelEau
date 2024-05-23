@@ -22,23 +22,10 @@ function slice(arguments, firstIndex, endIndex = arguments.length-1){
 function toBigLetters(arguments){
 	if (Array.isArray(arguments)){
 		let bigLetters = [];
-		let bigWord = '';
 		
-		for (let j = 0 ; j < arguments.length ; j++){
-			let word = arguments[j];
-			for ( let i = 0 ; i < word.length ; i++){
-				if (word.charCodeAt(i) >= 97 && word.charCodeAt(i) <= 122){
-					bigWord += String.fromCharCode(word.charCodeAt(i) - 32)
-				}
-				else {
-					bigWord += word[i]
-				}
-			}
-			bigLetters.push(bigWord)
-			bigWord = '';
-			
+		for (string of arguments){
+			bigLetters.push(toBigLetters(string))
 		}
-		
 		return bigLetters
 	}
 	else {

@@ -21,25 +21,12 @@ function slice(arguments, firstIndex, endIndex = arguments.length-1){
 
 function toSmallLetters(arguments){
 	if (Array.isArray(arguments)){
-		let smallLetters = [];
-		let smallWord = '';
+		let smalLetters = [];
 		
-		for (let j = 0 ; j < arguments.length ; j++){
-			let word = arguments[j];
-			for ( let i = 0 ; i < word.length ; i++){
-				if (word.charCodeAt(i) >= 65 && word.charCodeAt(i) <= 90){
-					smallWord += String.fromCharCode(word.charCodeAt(i) + 32)
-				}
-				else {
-					smallWord += word[i]
-				}
-			}
-			smallLetters.push(smallWord)
-			smallWord = '';
-			
+		for (string of arguments){
+			smalLetters.push(toSmallLetters(string))
 		}
-		
-		return smallLetters
+		return smalLetters
 	}
 	else {
 		let smallLetters = "";
