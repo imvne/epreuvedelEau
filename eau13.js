@@ -3,7 +3,7 @@
 
 // Useful functions
 
-function slice(arguments, firstIndex, endIndex){
+function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	if (Array.isArray(arguments)){
 		let argumentsSliced = [];
 		for (let i = firstIndex ; i <= endIndex ; i++){
@@ -20,15 +20,15 @@ function slice(arguments, firstIndex, endIndex){
 	}
 }
 
-function charToNumber(arg){
-	let numberArr = [];
-	for (a of arg){
-		numberArr.push(parseInt(a))
+function charactersToNumbers(arguments){
+	let numbersArray = [];
+	for (string of arguments){
+		numbersArray.push(parseInt(string))
 	}
-	return numberArr
+	return numbersArray
 }
 
-function selectionSort(array){
+function toSelectionSort(array){
 	for (let i = 0 ; i < array.length-1 ; i++){
 		let min = i;
 		
@@ -47,16 +47,19 @@ function selectionSort(array){
 
 // Error management
 
-function checkArgument(arg){
-	if (arg.length < 2){
-		return false
+function isValidArguments(arguments){
+	if (arguments.length > 2) {
+		return true;
 	}
-	return true
+	return false
 }
 
-function checkArgumentType(arg){
-	for (element of arg){
-		if (!/^\d+$/.test(element)){
+function isANumber(arguments){ //areNumbers ?
+	let string = arguments.join('')
+	
+	for (character of string){
+		
+		if (isNaN(character)){
 			return false
 		}
 	}
@@ -67,27 +70,26 @@ function checkArgumentType(arg){
 // Parsing
 
 function getArguments(){
-	let arguments = slice(process.argv, 2, process.argv.length-1);
+	let arguments = slice(process.argv, 2);
 	return arguments
 }
 
 // Solving
 
-function selectionSorted(){
-	const argument = getArguments();
-	if (!checkArgument(argument)){
+function getSelectionSorted(){
+	const arguments = getArguments();
+	if (!isValidArguments(arguments)){
 		return 'erreur : insérez au moins deux arguments'
 	}
-	else if (!checkArgumentType(argument)){
+	else if (!isANumber(arguments)){
 		return "erreur : n'insérez que des nombres"
 	}
 	else {
-		const numbers = charToNumber(argument)
-		return selectionSort(numbers)
+		return toSelectionSort(charToNumber(arguments))
 	}
 }
 
 
 // Print
 
-console.log(selectionSorted());
+console.log(getSelectionSorted());
