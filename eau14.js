@@ -3,7 +3,7 @@
 
 // Useful functions
 
-function slice(arguments, firstIndex, endIndex){
+function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	if (Array.isArray(arguments)){
 		let argumentsSliced = [];
 		for (let i = firstIndex ; i <= endIndex ; i++){
@@ -20,58 +20,53 @@ function slice(arguments, firstIndex, endIndex){
 	}
 }
 
-function toBigLetter(word) {
-	let bigLetters = "";
-	
-	for ( let i = 0 ; i < word.length ; i++){
-		
-		if (word.charCodeAt(0) >= 97 && word.charCodeAt(0) <= 122){
-			bigLetters += String.fromCharCode(word.charCodeAt(i) - 32)
-		}
-		else {
-			bigLetters += word[i]
-		}
-	}
-	
-	return bigLetters
-}
-
-function upperFirstLetter(arr){
-	let upperFirstLetterArr = [];
-	let upperFrst = "";
-	for (element of arr){
-		upperFrst = toBigLetter(element[0]) + slice(element, 1, element.length-1) // refaire la fonction slice
-		upperFirstLetterArr.push(upperFrst)
-	}
-	return upperFirstLetterArr;
-}
-
 function asciiOrderSort(array){
-	for (let i = 0 ; i < array.length-1 ; i++){
+	
+	for (let i = 0 ; i < array.length-1 ; i++){ // i : compteur nombre de tours de tri
 		
-		for (let j = 0 ; j < array.length-1 ; j++){
-			if (array[j].charCodeAt(0) > array[j+1].charCodeAt(0)){
-				let temp = array[j]
-				array[j] = array[j+1]
-				array[j+1] = temp
+		for (let j = 0 ; j < array.length-1 ; j++){ // j : position de la chaîne de caractère dans le tableau
+			
+			let stringLength = Math.min(array[j].length, array[j + 1].length);
+			
+			for (let k = 0 ; k < stringLength ; k++){  // k : position du caratère dans la chaîne de caractère
+				
+				if ( array[j].charCodeAt(k) === array[j+1].charCodeAt(k) ){
+					continue
+				}
+				else if ( array[j].charCodeAt(k) > array[j+1].charCodeAt(k) ){
+					let temp = array[j]
+					array[j] = array[j+1]
+					array[j+1] = temp
+					break
+				}
+				else if ( array[j].charCodeAt(k) < array[j+1].charCodeAt(k) ){
+					break
+				}
+				
 			}
 		}
 		
 	}
+	
 	return array.join(' ')
+}
+
+function verifAsciiSorted(array){
+	let asciiArray = [];
+	for (let j = 0; j < array.length; j++) {
+	    let asciiString = [];
+	    for (let k = 0; k < array[j].length; k++) {
+		  asciiString.push(array[j].charCodeAt(k));
+	    }
+	    asciiArray.push([asciiString]);
+	}
+	return asciiArray
 }
 
 // Error management
 
-function checkArgument(arg){
-	if (arg.length < 2){
-		return false
-	}
-	return true
-}
-
-function checkArgumentType(arg){
-	if (/^\D*$/.test(arg)){
+function isValidArguments(arguments){
+	if (arguments.length > 1) {
 		return true;
 	}
 	return false
@@ -81,28 +76,26 @@ function checkArgumentType(arg){
 // Parsing
 
 function getArguments(){
-	let arguments = slice(process.argv, 2, process.argv.length-1);
+	let arguments = slice(process.argv, 2);
 	return arguments
 }
 
 
 // Solving
 
-function asciiOrderSorted(){
+function getAsciiOrderSorted(){
 	const argument = getArguments();
 	
-	if (!checkArgument(argument)){
+	if (!isValidArguments(argument)){
 		return 'erreur : insérez au moins deux arguments'
 	}
-	else if (!checkArgumentType(argument)){
-		return "erreur: n'insérez que des lettres"
-	}
 	else {
-		return asciiOrderSort(upperFirstLetter(argument))
+		return asciiOrderSort(argument)
 	}
 }
 
 
 // Print
 
-console.log(asciiOrderSorted())
+console.log(getAsciiOrderSorted())
+console.log(verifAsciiSorted(getAsciiOrderSorted()))
