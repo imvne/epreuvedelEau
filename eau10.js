@@ -45,8 +45,8 @@ function isValidArguments(arguments){
 // Parsing
 
 function getArguments(){
-	const argumments = slice(process.argv, 2) 
-	return argumments
+	const arguments = slice(process.argv, 2) 
+	return arguments
 	
 }
 
@@ -54,13 +54,13 @@ function getArguments(){
 // Solving
 
 function getWantedIndex(){
-	const argument = getArguments();
+	const arguments = getArguments();
 	
-	if (!isValidArguments(argument)){
+	if (!isValidArguments(arguments)){
 		return 'erreur : insérez au moins deux arguments'
 	}
 	else {
-		return wantedIndex(argument)
+		return wantedIndex(arguments)
 	}
 }
 
