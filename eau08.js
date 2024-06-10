@@ -19,11 +19,9 @@ function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	}
 }
 
-function isNumberOnly(arg){
-	let element = arg[0]
-	
-	for (let i = 0; i < element.length ; i++){
-		if (element.charCodeAt(i) < 47 || element.charCodeAt(i) > 58){
+function isNumberOnly(arguments){
+	for (let i = 0; i < arguments.length ; i++){
+		if (arguments.charCodeAt(i) < 47 || arguments.charCodeAt(i) > 58){
 			return false
 		}
 	}
@@ -57,7 +55,7 @@ function numberOnly(){
 		return "erreur : n'insérez qu'un argument"
 	}
 	else {
-		return isNumberOnly(arguments)
+		return isNumberOnly(arguments[0])
 	}
 }
 
