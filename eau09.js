@@ -19,23 +19,23 @@ function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	}
 }
 
-function sortTwoNumbers(firstArgument, secondArgument){
+function sortTwoNumbers(firstNumber, secondNumber){
 	let minMaxSortedArray = [];
 	
-	if (firstArgument < secondArgument){
-		let min = firstArgument;
-		let max = secondArgument;
+	if (firstNumber < secondNumber){
+		let min = firstNumber;
+		let max = secondNumber;
 		minMaxSortedArray.push(min, max)
 	}
 	else {
-		let min = secondArgument;
-		let max = firstArgument;
+		let min = secondNumber;
+		let max = firstNumber;
 		minMaxSortedArray.push(min, max)
 	}
 	return minMaxSortedArray
 }
 
-function betweenMinMax(arguments){
+function numbersBetweenMinMax(arguments){
 	const minMaxSorted = sortTwoNumbers(arguments[0], arguments[1]);
 	
 	const min = parseInt(minMaxSorted[0]);
@@ -92,7 +92,7 @@ function getNumbersBetweenMinMax(){
 		return "erreur : n'insérez que des nombres"
 	}
 	else {
-		return betweenMinMax(arguments)
+		return numbersBetweenMinMax(arguments)
 	}
 }
 
