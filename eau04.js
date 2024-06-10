@@ -19,7 +19,7 @@ function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	}
 }
 
-function checkPrimeNumber(number) {
+function isPrimeNumber(number) {
 	if (number <= 1){
 		return false
 	}
@@ -37,7 +37,7 @@ function checkPrimeNumber(number) {
 
 
 function nextPrimeNumber(number) {
-	while (!checkPrimeNumber(number)){
+	while (!isPrimeNumber(number)){
 		number ++
 	}
 	
@@ -83,7 +83,8 @@ function getNextPrimeNumber(){
 		return 'erreur: insérez un nombre entier positif'
 	}
 	else {
-		return nextPrimeNumber(parseInt(argument))
+		const number = parseInt(argument);
+		return nextPrimeNumber(number)
 	}
 	
 }

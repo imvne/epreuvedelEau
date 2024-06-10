@@ -20,7 +20,7 @@ function slice(arguments, firstIndex, endIndex = arguments.length-1){
 }
 
 
-function getFibonacci(arguments){
+function whereIsFibonacciSuiteNumber(arguments){
 	const num = parseInt(arguments);
 	let fibonacciSuiteArray = [0,1];	
 	let nextFibonacciNumber;
@@ -76,7 +76,7 @@ function getFibonacciSuiteNumber(){
 		return 'erreur: insérez un nombre entier positif'
 	}
 	else {
-		return getFibonacci(arguments);
+		return whereIsFibonacciSuiteNumber(arguments);
 	}
 }
 
