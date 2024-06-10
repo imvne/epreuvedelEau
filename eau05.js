@@ -21,12 +21,12 @@ function slice(arguments, firstIndex, endIndex = arguments.length-1){
 
 function toSmallLetters(arguments){
 	if (Array.isArray(arguments)){
-		let smalLetters = [];
+		let smallLetters = [];
 		
 		for (string of arguments){
-			smalLetters.push(toSmallLetters(string))
+			smallLetters.push(toSmallLetters(string))
 		}
-		return smalLetters
+		return smallLetters
 	}
 	else {
 		let smallLetters = "";
