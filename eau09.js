@@ -20,19 +20,11 @@ function slice(arguments, firstIndex, endIndex = arguments.length-1){
 }
 
 function sortTwoNumbers(firstNumber, secondNumber){
-	let minMaxSortedArray = [];
-	
+
 	if (firstNumber < secondNumber){
-		let min = firstNumber;
-		let max = secondNumber;
-		minMaxSortedArray.push(min, max)
+		return [firstNumber, secondNumber]
 	}
-	else {
-		let min = secondNumber;
-		let max = firstNumber;
-		minMaxSortedArray.push(min, max)
-	}
-	return minMaxSortedArray
+	return [secondNumber, firstNumber]
 }
 
 function numbersBetweenMinMax(arguments){
