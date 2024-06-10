@@ -1,7 +1,7 @@
 // Combinaison de trois chiffres
 
 // Solving
-function threeDigitsCombination(){
+function getThreeDigitsCombination(){
 	let combinationList = [];
 	
 	for (let i = 0 ; i < 999 ; i++) {
@@ -20,7 +20,7 @@ function threeDigitsCombination(){
 
 
 // Print
-console.log(threeDigitsCombination());
+console.log(getThreeDigitsCombination());
 
 
 // je défini number en tant que string pour qu'il soit considéré comme un tableau et que ce soit simple d'atteindre chaque unité d'un nombre

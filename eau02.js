@@ -19,11 +19,11 @@ function slice(arguments, firstIndex, endIndex = arguments.length-1){
 	}
 }
 
-function reverse(arg) {
+function reverseArray(array) {
 	const argumentsList = [];
 	
-	for (let i = arg.length - 1 ; i >= 0 ; i--) {
-		argumentsList.push(arg[i]);
+	for (let i = array.length - 1 ; i >= 0 ; i--) {
+		argumentsList.push(array[i]);
 	}
 	return argumentsList.join('\n');
 }
@@ -48,17 +48,17 @@ function getArguments() {
 
 // Solving
 
-function getReversed() {
+function getReversedArray() {
 	const arguments = getArguments();
 	if (!isValidArguments(arguments)){
 		return 'erreur';  
 	}
 	else {
-		return reverse(arguments);
+		return reverseArray(arguments);
 	}		
 }
 
 
 // Print
 
-console.log(getReversed());
+console.log(getReversedArray());
